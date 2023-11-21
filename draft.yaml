@@ -1,0 +1,92 @@
+models:
+    Course:
+        title: string
+        description: text
+        user_id: id foreign:users
+
+    Video:
+        title: string
+        description: text
+        url: string
+        course_id: id foreign:course
+
+    
+    Progress:
+      user_id: id foreign:users
+      video_id: id foreign:videos
+      watched_duration: integer
+        
+seeders: Course
+
+controllers:
+  CourseController:
+    index:
+      query: all
+      render: course.index with:courses
+    show:
+      find: course.id
+      render: course.show with:course
+    create:
+      render: course.create
+    store:
+      validate: title, description
+      save: course
+      redirect: course.index
+    edit:
+      find: course.id
+      render: course.edit with:course
+    update:
+      validate: title, description
+      update: course
+      redirect: course.index
+    destroy:
+      destroy: course
+      redirect: course.index
+
+  VideoController:
+    index:
+      query: all
+      render: video.index with:videos
+    show:
+      find: video.id
+      render: video.show with:video
+    create:
+      render: video.create
+    store:
+      validate: title, description, url, duration
+      save: video
+      redirect: video.index
+    edit:
+      find: video.id
+      render: video.edit with:video
+    update:
+      validate: title, description, url, duration
+      update: video
+      redirect: video.index
+    destroy:
+      destroy: video
+      redirect: video.index
+
+  ProgressController:
+    index:
+      query: all
+      render: progress.index with:progresses
+    show:
+      find: progress.id
+      render: progress.show with:progress
+    create:
+      render: progress.create
+    store:
+      validate: user_id, video_id, watched_duration
+      save: progress
+      redirect: progress.index
+    edit:
+      find: progress.id
+      render: progress.edit with:progress
+    update:
+      validate: user_id, video_id, watched_duration
+      update: progress
+      redirect: progress.index
+    destroy:
+      destroy: progress
+      redirect: progress.index

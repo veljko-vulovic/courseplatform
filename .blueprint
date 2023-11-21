@@ -1,0 +1,42 @@
+created:
+    - app/Http/Controllers/CourseController.php
+    - app/Http/Controllers/VideoController.php
+    - app/Http/Controllers/ProgressController.php
+    - database/factories/CourseFactory.php
+    - database/factories/VideoFactory.php
+    - database/factories/ProgressFactory.php
+    - database/migrations/2023_11_19_165414_create_courses_table.php
+    - database/migrations/2023_11_19_165415_create_videos_table.php
+    - database/migrations/2023_11_19_165416_create_progress_table.php
+    - app/Models/Course.php
+    - app/Models/Video.php
+    - app/Models/Progress.php
+    - database/seeders/CourseSeeder.php
+    - tests/Feature/Http/Controllers/CourseControllerTest.php
+    - tests/Feature/Http/Controllers/VideoControllerTest.php
+    - tests/Feature/Http/Controllers/ProgressControllerTest.php
+    - app/Http/Requests/CourseStoreRequest.php
+    - app/Http/Requests/CourseUpdateRequest.php
+    - app/Http/Requests/VideoStoreRequest.php
+    - app/Http/Requests/VideoUpdateRequest.php
+    - app/Http/Requests/ProgressStoreRequest.php
+    - app/Http/Requests/ProgressUpdateRequest.php
+    - resources/views/course/index.blade.php
+    - resources/views/course/show.blade.php
+    - resources/views/course/create.blade.php
+    - resources/views/course/edit.blade.php
+    - resources/views/video/index.blade.php
+    - resources/views/video/show.blade.php
+    - resources/views/video/create.blade.php
+    - resources/views/video/edit.blade.php
+    - resources/views/progress/index.blade.php
+    - resources/views/progress/show.blade.php
+    - resources/views/progress/create.blade.php
+    - resources/views/progress/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
+    Course: { title: string, description: text, user_id: 'id foreign:users' }
+    Video: { title: string, description: text, url: string, course_id: 'id foreign:course' }
+    Progress: { user_id: 'id foreign:users', video_id: 'id foreign:videos', watched_duration: integer }
