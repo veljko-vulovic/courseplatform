@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Requests\VideoControllerStoreRequest;
-use App\Http\Requests\VideoControllerUpdateRequest;
+ 
 use App\Models\Video;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,9 +18,10 @@ class VideoController extends Controller
 
     public function show(Request $request, Video $video): View
     {
-        $video = Video::find($id);
-
-        return view('video.show', compact('video'));
+        return view('video.show', [
+            'video' => $video,
+            'courseEpisodes' => $video->getCurrentCourseEpisodes, //
+        ]);
     }
 
     public function create(Request $request): View
@@ -30,7 +29,7 @@ class VideoController extends Controller
         return view('video.create');
     }
 
-    public function store(VideoControllerStoreRequest $request): RedirectResponse
+    public function store( $request): RedirectResponse
     {
         $video = Video::create($request->validated());
 
@@ -39,12 +38,12 @@ class VideoController extends Controller
 
     public function edit(Request $request, Video $video): View
     {
-        $video = Video::find($id);
+        $video = Video::find($video);
 
         return view('video.edit', compact('video'));
     }
 
-    public function update(VideoControllerUpdateRequest $request, Video $video): RedirectResponse
+    public function update($request, Video $video): RedirectResponse
     {
         $video->update($request->validated());
 

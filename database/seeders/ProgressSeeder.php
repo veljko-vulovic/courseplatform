@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Model\Progress;
+use App\Models\Progress;
 use Illuminate\Database\Seeder;
 
 

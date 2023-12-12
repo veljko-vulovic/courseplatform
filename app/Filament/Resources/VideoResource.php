@@ -3,9 +3,11 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\VideoResource\Pages;
+use App\Filament\Resources\VideoResource\Pages\ViewVideo;
 use App\Filament\Resources\VideoResource\RelationManagers;
 use App\Models\Video;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -33,9 +35,11 @@ class VideoResource extends Resource
                     ->required()
                     ->maxLength(65535)
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('url')
-                    ->required()
-                    ->maxLength(255),
+                FileUpload::make('url')
+                    ->required()               
+                    ->preserveFilenames()
+
+                    
             ]);
     }
 

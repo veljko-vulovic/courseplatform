@@ -20,9 +20,12 @@ class CourseController extends Controller
 
     public function show(Request $request, Course $course): View
     {
-        $course = Course::find($id);
 
-        return view('course.show', compact('course'));
+        
+        return view('course.show',[
+            'course' => $course,
+            'videos' => $course->videos
+        ]);
     }
 
     public function create(Request $request): View
@@ -39,7 +42,7 @@ class CourseController extends Controller
 
     public function edit(Request $request, Course $course): View
     {
-        $course = Course::find($id);
+        $course = Course::find($course);
 
         return view('course.edit', compact('course'));
     }

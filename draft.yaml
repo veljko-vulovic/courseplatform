@@ -2,6 +2,7 @@ models:
     Course:
         title: string
         description: text
+        featured: boolean
         user_id: id foreign:users
 
     Video:

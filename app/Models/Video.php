@@ -32,8 +32,22 @@ class Video extends Model
         'course_id' => 'integer',
     ];
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class,'progress')->withPivot('watched_duration');
+    }
+
     public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
+    }
+    public function progresses(): BelongsTo
+    {
+        return $this->belongsTo(Progress::class);
+    }
+
+    public function getCurrentCourseEpisodes()
+    {
+        return $this->course()->first()->videos();
     }
 }

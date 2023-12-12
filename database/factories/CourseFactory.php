@@ -22,8 +22,9 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(4),
+            'title' => $this->faker->sentence(3),
             'description' => $this->faker->text,
+            'featured' => $this->faker->boolean,
             'user_id' => User::factory(),
         ];
     }

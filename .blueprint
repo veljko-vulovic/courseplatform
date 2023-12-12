@@ -5,9 +5,9 @@ created:
     - database/factories/CourseFactory.php
     - database/factories/VideoFactory.php
     - database/factories/ProgressFactory.php
-    - database/migrations/2023_11_19_165414_create_courses_table.php
-    - database/migrations/2023_11_19_165415_create_videos_table.php
-    - database/migrations/2023_11_19_165416_create_progress_table.php
+    - database/migrations/2023_11_21_193752_create_courses_table.php
+    - database/migrations/2023_11_21_193753_create_videos_table.php
+    - database/migrations/2023_11_21_193754_create_progress_table.php
     - app/Models/Course.php
     - app/Models/Video.php
     - app/Models/Progress.php
@@ -36,7 +36,8 @@ created:
 updated:
     - routes/web.php
 models:
+    Category: { name: string, slug: string }
     User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string:100 nullable' }
-    Course: { title: string, description: text, user_id: 'id foreign:users' }
+    Course: { title: string, description: text, featured: boolean, user_id: 'id foreign:users' }
     Video: { title: string, description: text, url: string, course_id: 'id foreign:course' }
     Progress: { user_id: 'id foreign:users', video_id: 'id foreign:videos', watched_duration: integer }

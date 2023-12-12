@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('video_id')->constrained();
-            $table->integer('watched_duration');
+            $table->string('watched_duration');
             $table->timestamps();
         });
 
